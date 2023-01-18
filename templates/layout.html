@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>{{page_title}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    {% block heading %} {% endblock %}
+    
+    {% block content %} {% endblock %}
+  </body>
+</html>

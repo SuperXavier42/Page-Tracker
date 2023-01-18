@@ -1,0 +1,15 @@
+body {
+    background-color: plum;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+    color: black;
+  }
+
+  .container {
+    color:coral;
+  }
