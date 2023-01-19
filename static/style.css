@@ -1,15 +1,28 @@
 body {
-    background-color: plum;
+    background-color: #0E0E0E;
     padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-    padding: 20px;
-    margin: auto;
-    color: black;
-  }
+}
+ 
+.heading {
+  width: 100%;
+  color: #00BFFF;
+  padding: 10px;
+}
 
-  .container {
-    color:coral;
-  }
+h1 {
+  padding: 20px;
+  margin: auto;
+  color: darkslategray;
+}
+
+a {
+  color: #FFFFFF;
+  size: 100px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #DCDCDC;
+}
+
