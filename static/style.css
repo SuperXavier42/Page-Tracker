@@ -1,26 +1,43 @@
-body {
-    background-color: #0E0E0E;
-    padding: 20px;
-}
- 
-.heading {
-  width: 100%;
-  color: #00BFFF;
-  padding: 10px;
+
+
+#searchbox {
+  background-color: #1c1c1c;
+  flex-wrap: wrap;
+  width:100%;
+  height:60px;
 }
 
-h1 {
-  margin: auto;
-  color: #1E90FF;
+#searchbar {
+  width: 400px;
+  height: 40px;
+  margin-top: 10px;
+  background-color: #141414;
+  color:#adadad;
+  border: 1px solid #2c2c2c;
+  transition: none;
+  box-shadow: none;
+
+}
+#searchbar:focus {
+  border-color:#0080ff;
+}
+
+#logo {
+  max-width:200px;
+}
+
+body {
+  background-color: #0E0E0E;
 }
 
 a {
   color: #FFFFFF;
-  padding: 5px;
+  padding: 10px;
   text-decoration: none;
 }
 
-a:hover {
+a:hover, a:active {
+  outline:0;
   color: #DCDCDC;
 }
 
