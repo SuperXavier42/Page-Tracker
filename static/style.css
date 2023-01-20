@@ -10,14 +10,12 @@ body {
 }
 
 h1 {
-  padding: 20px;
   margin: auto;
-  color: darkslategray;
+  color: #1E90FF;
 }
 
 a {
   color: #FFFFFF;
-  size: 100px;
   padding: 5px;
   text-decoration: none;
 }
