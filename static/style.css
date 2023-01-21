@@ -1,12 +1,17 @@
+body {
+  background-color: #0E0E0E;
+  margin-top:0px;
+}
 #searchbox {
   display: flex;
   position:fixed;
+  top:0px;
+  left:0px;
   background-color: #1c1c1c;
   width:100%;
   height:60px;
   align-items: center;
 }
-
 #searchbar {
   width: 400px;
   height: 40px;
@@ -19,11 +24,9 @@
   box-shadow: none;
 
 }
-
 #searchbar:focus {
   border-color:#0080ff;
 }
-
 #signinbtn {
   border-radius: 5px;
   width:100px;
@@ -31,24 +34,70 @@
   background-color: #0b6ac9;
   transition:none;
 }
-
+h1 {
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+  font-weight: normal;
+  margin-top: 20px;
+  padding: 5px;
+  color: wheat;
+}
+.container {
+  max-width: 800px;
+  height:300px;
+  background-color: #7a7a7a33;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin:30px auto;
+}
+.container > form > p {
+  color: #c0392b;
+  background-color: white;
+  padding: 5px;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+}
+input, select {
+  padding: 10px;
+  font-size: 18px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+}
+input, select, #selected-image {
+  width: 100%;
+  display: block;
+  margin-top: 10px;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  margin-top: 5px;
+  font-size: 24px;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Bebas Neue', cursive;
+}
 .leftalign {
   display:flex;
   margin:10px;
 }
-
 .rightalign {
   display:flex;
   margin:10px;
   margin-left: auto;
 }
-
 #logo {
   max-height: 40px;
   margin:10px;
-}
-
-body {
-  background-color: #0E0E0E;
 }
 
