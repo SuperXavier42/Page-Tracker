@@ -62,11 +62,11 @@ button {
   border-bottom-left-radius: 0px;
   border-left: 0px transparent;
 }
-#signin-btn {
+#logout-btn {
   border-radius: 5px;
   width:100px;
   color:#ffffff;
-  background-color: #0b6ac9;
+  background-color: #1686be;
   transition:none;
 }
 h1 {
