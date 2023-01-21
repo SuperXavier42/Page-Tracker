@@ -15,7 +15,7 @@ with app.app_context():
 
 @app.route('/')
 def home():
-    if session.get("logged_in"):
+    if session.get("logged_in"): 
         user_id = session.get('user_id')
         return render_template('home.html')
     else:
