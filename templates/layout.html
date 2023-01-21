@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
   </head>
   <body>
-    <div id="searchbox" class="d-flex justify-content-center">
-      <a href="{{url_for('home')}}"><img id="logo" src="https://animixplay.to/assets/logo.png"></a>
-      <input id="searchbar" class="form-control" autocomplete="off" type="text" placeholder="Search">
-      <a href="{{url_for('login')}}"><button id="loginbtn" class="btn">Login</button></a>
-    </div>
-    <div id="topcover">
-
+    <div id="searchbox">
+      <div class="leftalign">
+        <a href="{{url_for('home')}}"><img id="logo" src="https://animixplay.to/assets/logo.png"></a>
+        <input id="searchbar" class="form-control" autocomplete="off" type="text" placeholder="Search">
+      </div>
+      <div class="rightalign"><a href="{{url_for('login')}}"><button id="signinbtn" class="btn">Sign in</button></a></div>
     </div>
     {% block heading %} {% endblock %}
     
