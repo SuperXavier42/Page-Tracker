@@ -2,7 +2,7 @@ import sqlite3
 
 from flask import g
 
-db_file = 'C:\Program Files\SQLiteStudio\data.db'
+db_file = 'D:\VSCode\Website\data.db'
 
 def get_db():
     connection = g.get('db', 'null')
