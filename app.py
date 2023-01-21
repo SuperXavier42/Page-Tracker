@@ -13,7 +13,16 @@ with app.app_context():
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    if session.get("logged_in"):
+        user_id = session.get('user_id')
+        return render_template('home.html')
+    else:
+        return redirect(url_for('login_page'))
+
+@app.route('/logout')
+def logout():
+    session['logged_in'] = False
+    return redirect(url_for('login_page'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
