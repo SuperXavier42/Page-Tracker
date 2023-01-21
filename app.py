@@ -19,7 +19,7 @@ def home():
         user_id = session.get('user_id')
         return render_template('home.html')
     else:
-        return redirect(url_for('login_page'))
+        return redirect(url_for('auth.login_page'))
         
         
     

@@ -7,7 +7,7 @@ auth_bp = Blueprint('auth', __name__)
 @auth_bp.route('/logout')
 def logout():
     session['logged_in'] = False
-    return redirect(url_for('login_page'))
+    return redirect(url_for('auth.login_page'))
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login_page():
@@ -33,7 +33,7 @@ def login_page():
 def signup():
     notif=""
     if request.method=='GET':
-        return redirect(url_for('login_page'))
+        return redirect(url_for('auth.login_page'))
     else:
         username=request.form['username']
         password=request.form['password']
