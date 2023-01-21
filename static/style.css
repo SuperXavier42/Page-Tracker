@@ -70,7 +70,7 @@ input, select {
   border-bottom: 1px solid white;
   outline: none;
 }
-input, select, #selected-image {
+input, select{
   width: 100%;
   display: block;
   margin-top: 10px;
@@ -87,11 +87,21 @@ button {
   cursor: pointer;
   font-family: 'Bebas Neue', cursive;
 }
-.leftalign {
+#menu-toggle{
+  width:30px;
+  height:30px;
+  color:#ffffff;
+  margin:10px;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  padding:5px;
+}
+.left-align {
   display:flex;
   margin:10px;
 }
-.rightalign {
+.right-align {
   display:flex;
   margin:10px;
   margin-left: auto;
@@ -100,4 +110,3 @@ button {
   max-height: 40px;
   margin:10px;
 }
-
