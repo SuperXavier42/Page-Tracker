@@ -4,24 +4,33 @@ from passlib.hash import pbkdf2_sha256 as pw
 def create_table():
     connection = get_db()
     sql = connection.cursor()
-    sql.execute("""create table if not exists users (
+    sql.execute(
+        """create table if not exists users (
         "id" integer primary key autoincrement,
         "username" Text,
-        "password" Text) """)
+        "password" Text
+    ) """
+    )
 
 
 def create_account(username, password):
     connection = get_db()
     sql = connection.cursor()
-    hashed = pw.hash(password)
-    sql.execute("insert into users (username, password) values (?, ?)",[username, hashed])   
-    connection.commit()
-    return "Account created"
+    result = sql.execute("select * from users where username = ?", [username])
+    rows = result.fetchall()
+    if len(rows) > 0:
+        return "Username already exsists"
+    else:
+        hashed = pw.hash(password)
+        sql.execute("insert into users (username, password) values (?, ?)", [username, hashed])
+        connection.commit()
+        return "Account created"
 
 def check_account(username, password):
     connection = get_db()
     sql = connection.cursor()
-    result = sql.execute('''select * from users where username = ?''', [username])
+    result = sql.execute('''select * from users
+                            where username = ?''', [username])
     data = result.fetchone()
     if data:
         hashed = data['password']
