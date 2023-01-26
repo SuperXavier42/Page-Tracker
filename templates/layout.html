@@ -21,7 +21,9 @@
       </div>
       <div class="rightalign"><a href="{{url_for('auth.logout')}}"><button id="logout-btn" class="btn">Logout</button></a></div>
     </div>
-    {% block content %} {% endblock %}
+    <div class="content">
+      {% block content %} {% endblock %}
+    </div>
 
     <script>
       $('#menu-toggle').click(function(){
