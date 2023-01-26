@@ -21,5 +21,7 @@ def home():
     else:
         return redirect(url_for('auth.login_page'))
         
-        
+@app.route('/watch')
+def watch():
+    return render_template('watch.html')        
     
