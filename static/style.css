@@ -69,6 +69,7 @@ button {
 }
 #logout-btn {
   border-radius: 5px;
+  margin:0px;
   width:100px;
   color:#ffffff;
   background-color: #1686be;
