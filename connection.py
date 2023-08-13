@@ -1,5 +1,5 @@
 import sqlite3
-
+from sqlite3 import Error
 from flask import g
 
 db_file = 'D:\VSCode\Website\data.db'
