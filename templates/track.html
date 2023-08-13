@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+
+
+{% block heading %}
+
+{% endblock %}
+
+{% block content %}
+<div class="new-book-form">
+    <form method="POST">
+        <div class="section">
+            <label for="book-name"><h2>Book Name</h2></label>
+            <input type="text" id="book-name" name="book-name">
+        </div>
+        <div class="section">
+            <label for="num-pages"><h2>Number of Pages</h2></label>
+            <input type="text" id="num-pages" name="num-pages">
+        </div>
+        <div class="section">
+            <label for="days"><h2>Days to Complete</h2></label>
+            <input type="text" id="days" name="days">
+        </div>
+    </form>
+    <input type="submit" value="Submit" id="new-book-submit">  
+</div>
+{% endblock%}
