@@ -83,6 +83,12 @@ h1 {
   padding: 5px;
   color: wheat;
 }
+h2{
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+  font-weight: normal;
+  color:wheat;
+}
 .container {
   display:flex;
   flex-direction: column;
@@ -110,7 +116,6 @@ h1 {
   width:60%;
   height:500px;
   margin:100px auto;
-  border: 1px solid #313131;
 }
 form{
   display:flex;
@@ -137,5 +142,16 @@ input, select {
 }
 #logo {
   max-height: 40px;
-  margin:10px;
+  margin: 0px;
+  text-decoration: none;
+}
+.new-book-form > form{
+  flex-direction: row;
+}
+.section{
+  flex-direction: column;
+  width:290px;
+}
+#new-book-submit{
+  margin-top: 30px;
 }
