@@ -3,8 +3,8 @@
 
 import secrets
 from flask import Flask, render_template, redirect, request, session, url_for
-from .users import create_table, check_account, create_account
-from .auth import auth_bp
+from users import create_table, check_account, create_account
+from auth import auth_bp
 
 app = Flask(__name__)
 
