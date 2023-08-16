@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-
-
 import secrets
 from flask import Flask, render_template, redirect, request, session, url_for
 from .users import create_table, check_account, create_account
