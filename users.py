@@ -1,4 +1,4 @@
-from .connection import get_db
+from connection import get_db   
 from passlib.hash import pbkdf2_sha256 as pw
 
 def create_table():
