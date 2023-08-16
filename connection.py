@@ -1,14 +1,7 @@
 import sqlite3
-
-from flask import g
-
-db_file = 'D:\VSCode\Website\data.db'
+from flask import Flask
 
 def get_db():
-    connection = g.get('db', 'null')
-    if connection == 'null':
-        g.db = sqlite3.connect(db_file)
-        g.db.row_factory = sqlite3.Row
-        return g.db
-    else:
-        return connection
+    con = sqlite3.connect('data.db', check_same_thread=False)
+    con.row_factory = sqlite3.Row
+    return con
