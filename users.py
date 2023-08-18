@@ -4,13 +4,12 @@ from passlib.hash import pbkdf2_sha256 as pw
 def create_table():
     connection = get_db()
     sql = connection.cursor()
-    sql.execute(
-        """create table if not exists users (
-        "id" integer primary key autoincrement,
-        "username" Text,
-        "password" Text
-    ) """
-    )
+    sql.execute("""create table if not exists users 
+    (
+        id integer primary key autoincrement,
+        username Text,
+        password Text
+    )""")
 
 
 def create_account(username, password):
