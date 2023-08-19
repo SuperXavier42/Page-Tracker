@@ -6,6 +6,7 @@ book_bp= Blueprint('book', __name__)
     
 @book_bp.route('/track', methods=['GET', 'POST'])
 def track():
+    error=""
     connection = get_db()
     sql = connection.cursor()
     if request.method == "POST":
@@ -13,6 +14,6 @@ def track():
         pages=request.form['num-pages']
         days=request.form['days']
         id=session.get('user_id')
-        add_book(name,pages,days,id)    
-    return render_template('track.html')        
+        error=add_book(name,pages,days,id)
+    return render_template('track.html')
     

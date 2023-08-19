@@ -25,4 +25,4 @@ def add_book(name, pages, days, id):
     else:
         sql.execute("insert into books (userId, bookName, bookPages, days) values (?, ?, ?, ?)", [id, name, pages, days])
         connection.commit()
-        return "Book added"    
+        return "Book added"
