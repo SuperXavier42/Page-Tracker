@@ -16,9 +16,7 @@ def login_page():
         username=request.form['username']
         password=request.form['password']
         current_id=check_account(username, password)
-        if not username or not password:
-            notif="Fill out all boxes"
-        elif current_id:
+        if current_id:
             session['logged_in']=True
             session['user_id']=current_id
             return redirect(url_for('home'))
