@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, request, session, url_for
 from users import create_table
-from book_data import create_books
+from book_data import create_books, locate_books
 from auth import auth_bp
 from books import book_bp
 
@@ -17,11 +17,10 @@ with app.app_context():
     create_table()
     create_books()
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
     if session.get("logged_in"): 
-        user_id = session.get('user_id')
-        return render_template('home.html')
+        books_list = locate_books()
+        return render_template('home.html', books=books_list)
     else:
         return redirect(url_for('auth.login_page'))
-        
