@@ -8,7 +8,24 @@
 
 {% block content %}
 <div class="container">
-
+    <table id="html-data-table">
+        <thead id="data-head">
+            <tr>
+                <th>Book Name</th>
+                <th>Total Pages</th>
+                <th>Pages Per Day</th>
+                <th>Days Left</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="data-body">
+        </tbody>
+    </table>
 </div>
+<script>
+    const tableBody = document.getElementById('#data-body');
+    
+    
+</script>
 <a href="{{url_for('book.addbook')}}"><button>Add Book</button></a>
 {% endblock %}
