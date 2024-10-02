@@ -11,6 +11,5 @@ def addbook():
         pages=request.form['num-pages']
         days=request.form['days']
         notif=add_book(name, pages, days)
-
-    return render_template('addbook.html')        
+    return render_template('addbook.html', error=notif)        
     

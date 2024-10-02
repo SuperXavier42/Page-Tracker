@@ -1,8 +1,8 @@
 from flask import session
-from connection import get_db
+from connection import get_db_tuple
 
 def create_books():
-    connection = get_db()
+    connection = get_db_tuple()
     sql = connection.cursor()
     sql.execute(
         """create table if not exists books (
@@ -14,22 +14,22 @@ def create_books():
     )
 
 def add_book(book_name, page_total, days_left):
-    connection = get_db()
+    connection = get_db_tuple()
     sql = connection.cursor()
     user_id = session.get('user_id')
-    result = sql.execute("select * from books where (user_id = ? AND book_name = ?)", [user_id, book_name])
+    result = sql.execute("SELECT * FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
     rows = result.fetchall()
     if(len(rows)>0):
         return "Book already being tracked"
     else:
-        sql.execute("insert into books (user_id, book_name, page_total, days_left) values (?, ?, ?, ?)", [user_id, book_name, page_total, days_left])
+        sql.execute("INSERT into books (user_id, book_name, page_total, days_left) values (?, ?, ?, ?)", [user_id, book_name, page_total, days_left])
         connection.commit()
         return "Tracking book"
     
-def locate_books(user_id):
-    connection = get_db()
+def locate_books():
+    connection = get_db_tuple()
     sql = connection.cursor()
     user_id = session.get('user_id')
-    result = sql.execute("select (book_name, page_total, days_left) from books where user_id = ?", [user_id])
+    result = sql.execute("SELECT book_name, page_total, days_left FROM books WHERE user_id = ?", [user_id])
     rows = result.fetchall()
     return rows
