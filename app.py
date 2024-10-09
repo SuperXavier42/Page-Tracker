@@ -20,7 +20,7 @@ with app.app_context():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if session.get("logged_in"): 
-        books_list = locate_books()
-        return render_template('home.html', books=books_list)
+        books = locate_books()
+        return render_template('home.html', books=books)
     else:
         return redirect(url_for('auth.login_page'))
