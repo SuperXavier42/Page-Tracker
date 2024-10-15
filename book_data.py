@@ -26,6 +26,14 @@ def add_book(book_name, page_total, days_left):
         connection.commit()
         return "Tracking book"
     
+def delete_book(book_name):
+    connection = get_db_tuple()
+    sql = connection.cursor()
+    user_id = session.get('user_id')
+    sql.execute("DELETE FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
+    return "Book deleted"
+
+
 def locate_books():
     connection = get_db_tuple()
     sql = connection.cursor()
