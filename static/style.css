@@ -36,6 +36,9 @@ form{
   display:flex;
   flex-direction: column;
 }
+p{
+  color:white;
+}
 
 /*Top bar*/
 #search-box {
@@ -100,6 +103,22 @@ form{
   transition:none;
 }
 
+/*Class styles*/
+.page, .book-page{
+  max-width:800px;
+  display: flex;
+  flex-direction: column;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+.book-page{
+  flex-flow: row wrap;
+}
+.page-button{
+  border-color: transparent;
+  outline-color: white;
+}
 .container {
   display:flex;
   flex-direction: column;
@@ -128,10 +147,6 @@ form{
   height:500px;
   margin:100px auto;
 }
-form{
-  display:flex;
-  flex-direction: column;
-}
 .form-input, select {
   padding: 10px;
   margin:10px;
@@ -156,15 +171,21 @@ form{
   margin: 0px;
   text-decoration: none;
 }
+
+/*New Book Form*/
+.new-book-form{
+  margin-top:35px;
+}
+
 .new-book-form > form{
   height:510px;
   width:300px;
   background-color: #7a7a7a33;
   flex-direction: column;
-  padding: 20px;
+  padding:20px;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius:20px;
   margin:30px auto;
 }
 .section{
@@ -174,12 +195,17 @@ form{
 #new-book-submit{
   margin-top: 30px;
 }
+#error-text{
+  position:fixed;
+  bottom: 770px;
+}
 
 /*Book table*/
 #data-table{
-  position: relative;
+  text-align: left;
   top: 100px;
-  height:600px;
+  height:auto;
+  max-height: 600px;
 }
 .table-content{
   overflow-y:auto;
