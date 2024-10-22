@@ -9,14 +9,14 @@
 {% block content %}
 <div class="new-book-form"> 
     <form method="POST">
-        <p>{{error}}</p>
+        <p id="error-text">{{error}}</p>
         <div class="section">
             <label for="book-name"><h2>Book Name</h2></label>
-            <input type="text" class="form-input" id="book-name" name="book-name">
+            <input type="text" class="form-input" id="book-name" name="book_name">
         </div>
         <div class="section">
             <label for="num-pages"><h2>Number of Pages</h2></label>
-            <input type="text" class="form-input" id="num-pages" name="num-pages">
+            <input type="text" class="form-input" id="num-pages" name="num_pages">
         </div>
         <div class="section">
             <label for="days"><h2>Days to Complete</h2></label>
@@ -24,6 +24,6 @@
         </div>
         <input type="submit" value="Add Book" class="form-button" id="new-book-submit"> 
     </form> 
-    <a href="{{url_for('home')}}"><button class="form-button">Home</button></a>
+    <a href="{{url_for('book.current_books')}}"><button class="page-button">Back</button></a>
 </div>
 {% endblock%}

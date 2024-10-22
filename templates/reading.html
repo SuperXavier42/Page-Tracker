@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+
+
+{% block heading %}
+
+{% endblock %}
+
+{% block content %}
+<div class="book-page">
+<div class="container" id="data-table">
+    <table class="styled-table" id="data-table-head">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Total Pages</th>
+                <th>Pages Per Day</th>
+                <th>Days Left</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+    <div class="table-content">
+        <table class="styled-table" id="data-table-body">
+            {% for book in books %}
+                <tr>
+                    <td>{{ book[0] }}</td>
+                    <td>{{ book[1] }}</td>
+                    <td>{{ book[1] }}/{{ book[2] }}</td>
+                    <td>{{ book[2] }}</td>
+                    <td></td>
+                    <td><a href="" onclick="document.getElementById('delete_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('book.deletebook')}}" id="delete_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Delete"></form></a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div> 
+<a href="{{url_for('home')}}"><button class="page-button">Home</button></a>
+<a href="{{url_for('book.addbook')}}"><button class="page-button">Add Book</button></a>
+</div>
+{% endblock %}
