@@ -31,6 +31,7 @@ def delete_book(book_name):
     sql = connection.cursor()
     user_id = session.get('user_id')
     sql.execute("DELETE FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
+    connection.commit()
     return "Book deleted"
 
 
