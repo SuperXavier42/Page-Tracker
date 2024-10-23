@@ -27,13 +27,21 @@ def deletebook():
 def startbook():
     if request.method == "POST":
         to_start=request.form['book_name']
+        page_count=request.form['page-count']
+        if(int(page_count)>0):
+            return render_template('continuebook.html', book=to_start, pages=page_count)
     return render_template('startbook.html', book=to_start)
 
 @planned_book_bp.route('/planning/submitstartedbook', methods=['GET', 'POST'])
 def submitstartedbook():
+    notif=""
     if request.method == "POST":
         name=request.form['book_name']
         pages=request.form['num_pages']
         days=request.form['days']
-        start_book(name, pages, days)
-    return redirect(url_for('planned.future_books'))
+        if(pages.isnumeric() and days.isnumeric()):
+            start_book(name, pages, days)
+            return redirect(url_for('planned.future_books'))
+        else:
+            notif="Invalid Input"
+            return render_template("startbook.html", book=name, error=notif)
