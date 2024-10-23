@@ -39,12 +39,12 @@ def delete_book(book_name):
     connection.commit()
     return "Book deleted"
 
-def complete_book(book_name):
+def complete_book(book_name, num_pages):
     connection = get_db_tuple()
     sql = connection.cursor()
     user_id = session.get('user_id')
     total_pages = sql.execute("SELECT page_total FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name]).fetchone()[0]
-    pages_left = total_pages - total_pages/sql.execute("SELECT days_left FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name]).fetchone()[0]
+    pages_left = total_pages - int(num_pages)
     sql.execute("UPDATE books SET page_total = ? WHERE (user_id = ? AND book_name = ?)", [round(pages_left), user_id, book_name])
     connection.commit()
     return "Book completed"
