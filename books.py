@@ -16,7 +16,10 @@ def addbook():
         name=request.form['book_name']
         pages=request.form['num_pages']
         days=request.form['days']
-        notif=add_book(name, pages, days)
+        if(pages.isnumeric() and days.isnumeric()):
+            notif=add_book(name, pages, days)
+        else:
+            notif="Invalid Input"
     return render_template('addbook.html', error=notif)        
     
 @book_bp.route('/reading/deletebook', methods=['GET', 'POST'])
@@ -34,8 +37,13 @@ def completebook():
 
 @book_bp.route('/reading/submitcompletedbook', methods=['GET', 'POST'])
 def submitcompletedbook():
+    notif=""
     if request.method == "POST":
         name=request.form['book_name']
         pages=request.form['num_pages']
-        complete_book(name, pages)
-    return redirect(url_for('book.current_books'))
+        if(pages.isnumeric()):
+            complete_book(name, pages)
+            return redirect(url_for('book.current_books'))
+        else:
+            notif="Invalid Input"
+            return render_template('completebook.html', book=name, error=notif)
