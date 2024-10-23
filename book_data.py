@@ -27,7 +27,7 @@ def add_book(book_name, page_total, days_left):
         date=datetime.now()
         target_date=date + timedelta(days=int(days_left))
         target_date = target_date.replace(hour=0, minute=0, second=0)
-        sql.execute("INSERT into books (user_id, book_name, page_total, days_left, target_date) values (?, ?, ?, ?, ?)", [user_id, book_name, page_total, days_left, target_date])
+        sql.execute("INSERT into books (user_id, book_name, page_total, days_left, target_date) VALUES (?, ?, ?, ?, ?)", [user_id, book_name, page_total, days_left, target_date])
         connection.commit()
         return "Tracking book"
     
@@ -68,6 +68,10 @@ def days_remaining(book_name):
     row=result.fetchone()
     target_date = datetime.strptime(row[0][0:19], '%Y-%m-%d %H:%M:%S')
     days_left=target_date - datetime.now()
-    sql.execute("UPDATE books SET days_left = ? WHERE (user_id = ? AND book_name = ?)", [int(days_left.days), user_id, book_name])
+    if(days_left<0):
+        sql.execute("DELETE FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
+        sql.execute("INSERT into planned_books (user_id, book_name) VALUES (?, ?)", [user_id, book_name])
+    else:
+        sql.execute("UPDATE books SET days_left = ? WHERE (user_id = ? AND book_name = ?)", [int(days_left.days), user_id, book_name])
     connection.commit()
     return "Day updated"
