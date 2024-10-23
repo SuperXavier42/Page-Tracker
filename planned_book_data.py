@@ -8,7 +8,8 @@ def create_planned_books():
     sql.execute(
         """create table if not exists planned_books (
         "user_id" Integer,
-        "book_name" Text
+        "book_name" Text,
+        "page_count" Integer
     )"""
     )
 
@@ -16,11 +17,12 @@ def add_book(book_name):
     connection = get_db_tuple()
     sql = connection.cursor()
     user_id = session.get('user_id')
+    row = sql.execute("SELECT * FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name]).fetchall()
     rows = sql.execute("SELECT * FROM planned_books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name]).fetchall()
-    if(len(rows)>0):
+    if(len(rows)>0 or len(row)>0):
         return "Book already on the list"
     else:
-        sql.execute("INSERT into planned_books (user_id, book_name) values (?, ?)", [user_id, book_name])
+        sql.execute("INSERT into planned_books (user_id, book_name, page_count) values (?, ?, ?)", [user_id, book_name, 0])
         connection.commit()
         return "Tracking book"
     
@@ -33,7 +35,7 @@ def start_book(book_name, page_total, days_left):
         return "Book already being tracked"
     else:
         date=datetime.now()
-        target_date=date + timedelta(days=int(days_left))
+        target_date=date + timedelta(days=int(days_left)+1)
         target_date = target_date.replace(hour=0, minute=0, second=0)
         sql.execute("INSERT into books (user_id, book_name, page_total, days_left, target_date) values (?, ?, ?, ?, ?)", [user_id, book_name, page_total, days_left, target_date])
         sql.execute("DELETE FROM planned_books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
@@ -52,5 +54,5 @@ def locate_books():
     connection = get_db_tuple()
     sql = connection.cursor()
     user_id = session.get('user_id')
-    result = sql.execute("SELECT book_name FROM planned_books WHERE user_id = ?", [user_id]).fetchall()
+    result = sql.execute("SELECT book_name, page_count FROM planned_books WHERE user_id = ?", [user_id]).fetchall()
     return result
