@@ -30,5 +30,12 @@ def deletebook():
 def completebook():
     if request.method == "POST":
         to_complete=request.form['book_name']
-        complete_book(to_complete)
+    return render_template('completebook.html', book=to_complete)
+
+@book_bp.route('/reading/submitcompletedbook', methods=['GET', 'POST'])
+def submitcompletedbook():
+    if request.method == "POST":
+        name=request.form['book_name']
+        pages=request.form['num_pages']
+        complete_book(name, pages)
     return redirect(url_for('book.current_books'))
