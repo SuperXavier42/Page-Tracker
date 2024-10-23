@@ -1,5 +1,6 @@
-from flask import Blueprint, redirect, render_template, session, request, url_for
-from book_data import add_book, locate_books, delete_book
+from flask import Blueprint, redirect, render_template, request, url_for
+from book_data import add_book, locate_books, delete_book, complete_book
+
 
 book_bp = Blueprint('book', __name__)
 
@@ -18,6 +19,13 @@ def deletebook():
     if request.method == "POST":
         to_delete=request.form['book_name']
         delete_book(to_delete)
+    return redirect(url_for('book.current_books'))
+
+@book_bp.route('/completedbook', methods=['GET', 'POST'])
+def completebook():
+    if request.method == "POST":
+        to_complete=request.form['book_name']
+        complete_book(to_complete)
     return redirect(url_for('book.current_books'))
 
 @book_bp.route('/reading', methods=['GET', 'POST'])
