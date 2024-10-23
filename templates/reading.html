@@ -47,7 +47,7 @@
                     <td>{{ book[1] }}</td>
                     <td id="pages-per-day{{loop.index}}"><script>calculatePages()</script></td>
                     <td>{{ book[2] }}</td>
-                    <td><a href="" onclick="document.getElementById('completed_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('book.completebook')}}" id="completed_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Completed"></form></a></td>
+                    <td><a href="" onclick="document.getElementById('completed_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('book.completebook')}}" id="completed_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Track"></form></a></td>
                     <td><a href="" onclick="document.getElementById('delete_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('book.deletebook')}}" id="delete_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Delete"></form></a></td>
                 </tr>
             </tbody>
