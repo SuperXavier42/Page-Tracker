@@ -11,14 +11,13 @@
     iteration = 0
     function calculatePages(){
         iteration++;
-        console.log(iteration);
 
         page_text="pages-left"+(iteration);
         day_text="days-left"+(iteration);
 
         pages=document.getElementById("pages-left"+iteration).value;
         days=document.getElementById("days-left"+iteration).value;
-        $("#pages-per-day"+iteration).text(Math.round(pages/days));
+        $("#pages-per-day"+iteration).text(Math.round(pages/(days)));
     }
 </script>
 

@@ -23,7 +23,7 @@
             {% for book in books %}
                 <tr>
                     <td>{{ book[0] }}</td>
-                    <td><a href="" onclick="document.getElementById('start_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('planned.startbook')}}" id="start_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Start"></form></a></td>
+                    <td><a href="" onclick="document.getElementById('start_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('planned.startbook')}}" id="start_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="hidden" value="{{book[1]}}" name="page-count"><input type="button" value="Start"></form></a></td>
                     <td><a href="" onclick="document.getElementById('delete_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('planned.deletebook')}}" id="delete_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Delete"></form></a></td>
                 </tr>
             </tbody>
