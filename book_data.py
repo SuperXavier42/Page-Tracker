@@ -74,7 +74,7 @@ def days_remaining(book_name):
     row=result.fetchone()
     target_date = datetime.strptime(row[0][0:19], '%Y-%m-%d %H:%M:%S')
     days_left=target_date - datetime.now()
-    if(days_left.days<0):
+    if(days_left.days<=0):
         sql.execute("DELETE FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
         sql.execute("INSERT into planned_books (user_id, book_name, page_count) VALUES (?, ?, ?)", [user_id, book_name, row[1]])
     else:
