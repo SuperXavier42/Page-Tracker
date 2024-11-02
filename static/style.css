@@ -201,15 +201,15 @@ p{
 }
 
 /*Book table*/
-#data-table{
-  text-align: left;
-  top: 100px;
-  height:auto;
-  max-height: 600px;
-}
 .table-content{
   overflow-y:auto;
   width:100%;
+}
+#data-table{
+  text-align: left;
+  top: 100px;
+  height: auto;
+  max-height: 350px;
 }
 .styled-table {
   border-collapse: collapse;
