@@ -8,16 +8,21 @@
 
 {% block content %}
 <script>
-    iteration = 0
+    itr1 = 0;
+    itr2 = 0;
+    function calculatePagesPerDay(){
+        itr1++;
+
+        pages=document.getElementById("total-pages"+itr1).value;
+        days=document.getElementById("days-left"+itr1).value;
+        $("#pages-per-day"+itr1).text(Math.round(pages/(days)));
+    }
     function calculatePages(){
-        iteration++;
+        itr2++;
 
-        page_text="pages-left"+(iteration);
-        day_text="days-left"+(iteration);
-
-        pages=document.getElementById("pages-left"+iteration).value;
-        days=document.getElementById("days-left"+iteration).value;
-        $("#pages-per-day"+iteration).text(Math.round(pages/(days)));
+        total=document.getElementById("total-pages"+itr2).value;
+        pages=document.getElementById("pages-read"+itr2).value;
+        $("#pages-left"+itr2).text(total-pages);
     }
 </script>
 
@@ -40,12 +45,13 @@
         <table class="styled-table" id="data-table-body">
             {% for book in books %}
                 <tr>
-                    <input type="hidden" value="{{book[1]}}" id="pages-left{{loop.index}}">
-                    <input type="hidden" value="{{book[2]}}" id="days-left{{loop.index}}">
+                    <input type="hidden" value="{{book[1]}}" id="total-pages{{loop.index}}">
+                    <input type="hidden" value="{{book[2]}}" id="pages-read{{loop.index}}">
+                    <input type="hidden" value="{{book[3]}}" id="days-left{{loop.index}}">
                     <td>{{ book[0] }}</td>
-                    <td>{{ book[1] }}</td>
-                    <td id="pages-per-day{{loop.index}}"><script>calculatePages()</script></td>
-                    <td>{{ book[2] }}</td>
+                    <td id="pages-left{{loop.index}}"><script>calculatePages()</script></td>
+                    <td id="pages-per-day{{loop.index}}"><script>calculatePagesPerDay()</script></td>
+                    <td>{{ book[3] }}</td>
                     <td><a href="" onclick="document.getElementById('completed_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('book.completebook')}}" id="completed_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Track"></form></a></td>
                     <td><a href="" onclick="document.getElementById('delete_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('book.deletebook')}}" id="delete_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Delete"></form></a></td>
                 </tr>
