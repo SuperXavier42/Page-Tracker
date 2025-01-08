@@ -70,7 +70,7 @@ def days_remaining(book_name):
     connection = get_db_tuple()
     sql = connection.cursor()
     user_id = session.get('user_id')
-    result = sql.execute("SELECT target_date, pages_read FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
+    result = sql.execute("SELECT target_date, page_total FROM books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
     row=result.fetchone()
     target_date = datetime.strptime(row[0][0:19], '%Y-%m-%d %H:%M:%S')
     days_left=target_date - datetime.now()
