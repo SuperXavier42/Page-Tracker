@@ -1,11 +1,7 @@
 {% extends 'layout.html' %}
 
-{% block heading %}
-
-{% endblock %}
-
-
 {% block content %}
+<!--This file is the interface for the planned book data-->
 <div class="book-page">
     <h1>Plan to Read</h1>
 <div class="container" id="data-table">
@@ -23,6 +19,7 @@
             {% for book in books %}
                 <tr>
                     <td>{{ book[0] }}</td>
+                    <!--These buttons submit a form with an action that calls a function from a python file and sends data via hidden input tag with the value equal to the data needed-->
                     <td><a href="" onclick="document.getElementById('start_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('planned.startbook')}}" id="start_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="hidden" value="{{book[1]}}" name="page-count"><input type="button" value="Start"></form></a></td>
                     <td><a href="" onclick="document.getElementById('delete_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('planned.deletebook')}}" id="delete_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Delete"></form></a></td>
                 </tr>

@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<!--This file is the main interface for the finished books. It displays the finished books-->
+<div class="book-page">
+    <h1>Finished Reading</h1>
+<div class="container" id="data-table">
+    <table class="styled-table" id="data-table-head">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Date Finished</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+    <div class="table-content">
+        <table class="styled-table" id="data-table-body">
+            {% for book in books %}
+                <tr>
+                    <td>{{ book[0] }}</td>
+                    <td>{{ book[1] }}</td>
+                    <!--These buttons submit a form with an action that calls a function from a python file and sends data via hidden input tag with the value equal to the data needed-->
+                    <td><a href="" onclick="document.getElementById('delete_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('finished.deletebook')}}" id="delete_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Delete"></form></a></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div> 
+<a href="{{url_for('home')}}"><button class="page-button">Home</button></a>
+<a href="{{url_for('finished.addbook')}}"><button class="page-button">Add Book</button></a>
+</div>
+{% endblock %}

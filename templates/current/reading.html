@@ -1,12 +1,9 @@
 {% extends 'layout.html' %}
 
-
-
-{% block heading %}
-
-{% endblock %}
-
 {% block content %}
+<!--This is the main interface for the currently reading books-->
+
+<!--This script tag provides functions to calculate the data in the display table-->
 <script>
     itr1 = 0;
     itr2 = 0;
@@ -45,13 +42,16 @@
         <table class="styled-table" id="data-table-body">
             {% for book in books %}
                 <tr>
+                    <!--These hidden values are passed when a button is clicked so data can properly be edited in the python files-->
                     <input type="hidden" value="{{book[1]}}" id="total-pages{{loop.index}}">
                     <input type="hidden" value="{{book[2]}}" id="pages-read{{loop.index}}">
                     <input type="hidden" value="{{book[3]}}" id="days-left{{loop.index}}">
                     <td>{{ book[0] }}</td>
+                    <!--Calls the functions to display the manipulated data-->
                     <td id="pages-left{{loop.index}}"><script>calculatePages()</script></td>
                     <td id="pages-per-day{{loop.index}}"><script>calculatePagesPerDay()</script></td>
                     <td>{{ book[3] }}</td>
+                    <!--These buttons submit a form with an action that calls a function from a python file and sends data via hidden input tag with the value equal to the data needed-->
                     <td><a href="" onclick="document.getElementById('completed_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('book.completebook')}}" id="completed_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Track"></form></a></td>
                     <td><a href="" onclick="document.getElementById('delete_form{{loop.index}}').submit(); return false;"><form method="POST" action="{{url_for('book.deletebook')}}" id="delete_form{{loop.index}}"><input type="hidden" value="{{book[0]}}" name="book_name"><input type="button" value="Delete"></form></a></td>
                 </tr>

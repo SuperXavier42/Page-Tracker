@@ -1,12 +1,7 @@
 {% extends 'layout.html' %}
 
-
-
-{% block heading %}
-
-{% endblock %}
-
 {% block content %}
+<!--This files is for completing books from the current book table-->
 <div class="new-book-form"> 
     <form method="POST" action="{{url_for('book.submitcompletedbook')}}">
         <p id="error-text">{{error}}</p>

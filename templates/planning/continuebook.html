@@ -1,12 +1,7 @@
 {% extends 'layout.html' %}
 
-
-
-{% block heading %}
-
-{% endblock %}
-
 {% block content %}
+<!--This file is for moving books from the planning table to the current table if the book has alreday been read in the past but not finished-->
 <div class="new-book-form"> 
     <form method="POST" action="{{url_for('planned.submitstartedbook')}}">
         <p id="error-text">{{error}}</p>
