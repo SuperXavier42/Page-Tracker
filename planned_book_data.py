@@ -45,7 +45,7 @@ def start_book(book_name, page_total, days_left):
         date=datetime.now()
         target_date=date + timedelta(days=int(days_left)+1)
         target_date = target_date.replace(hour=0, minute=0, second=0)
-        sql.execute("INSERT into books (user_id, book_name, page_total, days_left, target_date) values (?, ?, ?, ?, ?)", [user_id, book_name, page_total, days_left, target_date])
+        sql.execute("INSERT into books (user_id, book_name, page_total, pages_read, days_left, target_date) values (?, ?, ?, ?, ?, ?)", [user_id, book_name, page_total, 0, days_left, target_date])
         sql.execute("DELETE FROM planned_books WHERE (user_id = ? AND book_name = ?)", [user_id, book_name])
         connection.commit()
         return "Tracking book"
